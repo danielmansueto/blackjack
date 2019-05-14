@@ -1,4 +1,33 @@
+<CustomBoxLayout@BoxLayout>:
+    orientation: "horizontal"
+    spacing: 1
+
 <BlackjackLayout>:
+    orientation: "vertical"
+
     Label:
         text: "BLACKJACK"
         font_size: 100
+        size_hint_y: 1
+    CustomBoxLayout:
+        size_hint_y: 1
+        TextInput:
+            text: ""
+            font_size: 100
+
+        Button:
+            text: "Deal"
+
+    BoxLayout:
+        size_hint_y: 3
+
+
+    CustomBoxLayout:
+        size_hint_y: 1
+        Button:
+            text: "Hit"
+        Button:
+            text: "Stay"
+        Button:
+            text: "Double"
+
