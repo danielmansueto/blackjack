@@ -17,7 +17,7 @@ class BlackjackLayout(BoxLayout):
         for suit in suits:
             for i in range(len(values)):
                 deck.append([values[i], suit, amounts[i], 'boardgamepack/PNG/Cards/card' + suit + values[i] +'.png'])
-        print(deck)
+        return deck
 
     def shuffle(self, deck):
         new_deck = random.shuffle(deck)
