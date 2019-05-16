@@ -8,6 +8,9 @@ class BlackjackApp(App):
         return BlackjackLayout()
 
 class BlackjackLayout(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.deck = []
     def create_deck(self):
         deck = []
         suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
@@ -17,11 +20,10 @@ class BlackjackLayout(BoxLayout):
         for suit in suits:
             for i in range(len(values)):
                 deck.append([values[i], suit, amounts[i], 'boardgamepack/PNG/Cards/card' + suit + values[i] +'.png'])
-        return deck
+        self.deck = deck
 
-    def shuffle(self, deck):
-        new_deck = random.shuffle(deck)
-        return new_deck
+        random.shuffle(self.deck)
+        print(self.deck)
 
 
 
