@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+import random
 
 class BlackjackApp(App):
     def build(self):
@@ -9,58 +10,18 @@ class BlackjackApp(App):
 class BlackjackLayout(BoxLayout):
     def create_deck(self):
         deck = []
-        suits = ['H', 'C', 'D', 'S']
+        suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
         values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-        amounts = [[1, 11], 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        amounts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
         for suit in suits:
-            for value in values:
-                if value == 'A':
-                    amount = amounts[0]
-                    deck.append([value, suit, amount])
-                if value == '2':
-                    amount = amounts[1]
-                    deck.append([value, suit, amount])
-                if value == '3':
-                    amount = amounts[2]
-                    deck.append([value, suit, amount])
-                if value == '4':
-                    amount = amounts[3]
-                    deck.append([value, suit, amount])
-                if value == '5':
-                    amount = amounts[4]
-                    deck.append([value, suit, amount])
-                if value == '6':
-                    amount = amounts[5]
-                    deck.append([value, suit, amount])
-                if value == '7':
-                    amount = amounts[6]
-                    deck.append([value, suit, amount])
-                if value == '8':
-                    amount = amounts[7]
-                    deck.append([value, suit, amount])
-                if value == '9':
-                    amount = amounts[8]
-                    deck.append([value, suit, amount])
-                if value == '10':
-                    amount = amounts[9]
-                    deck.append([value, suit, amount])
-                if value == 'J':
-                    amount = amounts[9]
-                    deck.append([value, suit, amount])
-                if value == 'Q':
-                    amount = amounts[9]
-                    deck.append([value, suit, amount])
-                if value == 'K':
-                    amount = amounts[9]
-                    deck.append([value, suit, amount])
-
+            for i in range(len(values)):
+                deck.append([values[i], suit, amounts[i], 'boardgamepack/PNG/Cards/card' + suit + values[i] +'.png'])
         print(deck)
 
-
-
-
-
+    def shuffle(self, deck):
+        new_deck = random.shuffle(deck)
+        return new_deck
 
 
 
