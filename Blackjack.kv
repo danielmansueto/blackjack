@@ -1,6 +1,18 @@
 <CustomBoxLayout@BoxLayout>:
     orientation: "horizontal"
-    spacing: 1
+
+<Card@Widget>:
+    image_file: "greybackground.png"
+    card_value: 0
+    canvas:
+        Rectangle:
+            source: self.image_file
+            size: self.size
+            pos: self.pos
+
+<Spacer@Widget>:
+    size_hint_x: .5
+
 
 <BlackjackLayout>:
     orientation: "vertical"
@@ -10,6 +22,7 @@
         text: "BLACKJACK"
         font_size: 100
         size_hint_y: 1
+
     CustomBoxLayout:
         size_hint_y: 1
         TextInput:
@@ -22,9 +35,58 @@
             on_press: root.create_deck()
 
     BoxLayout:
-        size_hint_y: 3
+        size_hint_y: 2
+        orientations: "horizontal"
 
+        Card:
+            id: card1
 
+        Card:
+            id: card2
+
+        Card:
+            id: card3
+
+        Card:
+            id: card4
+
+        Card:
+            id: card5
+
+        Widget:
+            canvas:
+                Rectangle:
+                    source: "boardgamepack/PNG/Cards/cardBack_red5.png"
+                    size: self.size
+                    pos: self.pos
+
+    BoxLayout:
+        size_hint_y: 2
+        orientations: "horizontal"
+
+        Card:
+            id: user_card1
+
+        Card:
+            id: user_card2
+
+        Card:
+            id: user_card3
+
+        Card:
+            id: usercard3
+
+        Card:
+            id: card3
+
+        Label:
+            canvas:
+                Rectangle:
+                    source: "greybackground.png"
+                    size: self.size
+                    pos: self.pos
+
+            text: "Your hand:"
 
     CustomBoxLayout:
         size_hint_y: 1
