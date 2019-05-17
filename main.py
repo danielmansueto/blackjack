@@ -31,6 +31,10 @@ class BlackjackLayout(BoxLayout):
         card_2_image = card_2[3]
         card_2_value = card_2[2]
 
+        self.user_card1.card_value = card_1_value
+        self.user_card1.image_file = card_1_image
+        self.user_card2.card_value = card_2_value
+        self.user_card2.image_file = card_2_image
 
 
 
