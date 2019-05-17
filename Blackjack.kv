@@ -35,9 +35,15 @@
 
     CustomBoxLayout:
         size_hint_y: 1
+        Label:
+            text: "$"
+            size_hint_x: .2
+            font_size: 120
+            background_color: 1,1,1,1
         TextInput:
             text: ""
-            font_size: 100
+            font_size: 120
+            input_filter: 'float'
 
         Button:
             id: deal
