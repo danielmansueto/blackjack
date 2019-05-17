@@ -24,6 +24,14 @@ class BlackjackLayout(BoxLayout):
 
         random.shuffle(self.deck)
         print(self.deck)
+        card_1 = self.deck.pop(0)
+        card_2 = self.deck.pop(0)
+        card_1_image = card_1[3]
+        card_1_value = card_1[2]
+        card_2_image = card_2[3]
+        card_2_value = card_2[2]
+        self.
+
 
 
 
