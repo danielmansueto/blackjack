@@ -30,7 +30,7 @@ class BlackjackLayout(BoxLayout):
         card_1_value = card_1[2]
         card_2_image = card_2[3]
         card_2_value = card_2[2]
-        self.
+
 
 
 
