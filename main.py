@@ -36,6 +36,8 @@ class BlackjackLayout(BoxLayout):
         self.user_card2.card_value = card_2_value
         self.user_card2.image_file = card_2_image
 
+        print(self.my_hand[0][2] + self.my_hand[1][2])
+
 
 
     def hit(self):
@@ -43,14 +45,18 @@ class BlackjackLayout(BoxLayout):
             self.my_hand[2] = self.deck.pop(0)
             self.user_card3.image_file = self.my_hand[2][3]
             self.user_card3.card_value = self.my_hand[2][2]
+            print(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2])
         elif self.user_card4.card_value == 0:
             self.my_hand[3] = self.deck.pop(0)
             self.user_card4.image_file = self.my_hand[3][3]
             self.user_card4.card_value = self.my_hand[3][2]
+            print(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2])
         elif self.user_card5.card_value == 0:
             self.my_hand[4] = self.deck.pop(0)
             self.user_card5.image_file = self.my_hand[4][3]
             self.user_card5.card_value = self.my_hand[4][2]
+            print(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2] + self.my_hand[4][2])
+
 
 
 
