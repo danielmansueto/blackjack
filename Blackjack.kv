@@ -27,6 +27,7 @@
     user_card3: user_card3
     user_card4: user_card4
     user_card5: user_card5
+    hit: hit
 
     Label:
         text: "BLACKJACK"
@@ -107,7 +108,9 @@
     CustomBoxLayout:
         size_hint_y: 1
         Button:
+            id: hit
             text: "Hit"
+            on_press: root.hit()
         Button:
             text: "Stay"
         Button:
