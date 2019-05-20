@@ -28,6 +28,7 @@
     user_card4: user_card4
     user_card5: user_card5
     hit_me: hit_me
+    blank: blank
 
     Label:
         text: "BLACKJACK"
@@ -96,14 +97,14 @@
         Card:
             id: user_card5
 
-        Label:
-            canvas:
-                Rectangle:
-                    source: "greybackground.png"
-                    size: self.size
-                    pos: self.pos
-
-            text: "Your hand:"
+        Card:
+            id: blank
+            Label:
+                text: ""
+                color: 0,0,0,1
+                size: blank.size
+                pos: blank.pos
+                
 
     CustomBoxLayout:
         size_hint_y: 1
