@@ -38,6 +38,22 @@ class BlackjackLayout(BoxLayout):
 
 
 
+    def hit(self):
+        if self.user_card3.image_file == "greybackground.png":
+            card_3 = self.deck.pop(0)
+            self.user_card3.image_file = card_3[3]
+            self.user_card3.value = card_3[2]
+        elif self.user_card4.image_file == "greybackground.png":
+            card_4 = self.deck.pop(0)
+            self.user_card3.image_file = card_4[3]
+            self.user_card3.value = card_4[2]
+        elif self.user_card5.image_file == "greybackground.png":
+            card_5 = self.deck.pop(0)
+            self.user_card3.image_file = card_5[3]
+            self.user_card3.value = card_5[2]
+
+
+
 
 if __name__ == '__main__':
     app = BlackjackApp()
