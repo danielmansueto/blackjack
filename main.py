@@ -11,6 +11,7 @@ class BlackjackLayout(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.deck = []
+        self.my_hand = [[], [], [], [], []]
     def create_deck(self):
         deck = []
         suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
@@ -23,13 +24,12 @@ class BlackjackLayout(BoxLayout):
         self.deck = deck
 
         random.shuffle(self.deck)
-        print(self.deck)
-        card_1 = self.deck.pop(0)
-        card_2 = self.deck.pop(0)
-        card_1_image = card_1[3]
-        card_1_value = card_1[2]
-        card_2_image = card_2[3]
-        card_2_value = card_2[2]
+        self.my_hand[0] = self.deck.pop(0)
+        self.my_hand[1] = self.deck.pop(0)
+        card_1_image = self.my_hand[0][3]
+        card_1_value = self.my_hand[0][2]
+        card_2_image = self.my_hand[1][3]
+        card_2_value = self.my_hand[1][2]
 
         self.user_card1.card_value = card_1_value
         self.user_card1.image_file = card_1_image
@@ -40,18 +40,17 @@ class BlackjackLayout(BoxLayout):
 
     def hit(self):
         if self.user_card3.image_file == "greybackground.png":
-            card_3 = self.deck.pop(0)
-            self.user_card3.image_file = card_3[3]
-            self.user_card3.value = card_3[2]
+            self.my_hand[2] = self.deck.pop(0)
+            self.user_card3.image_file = self.my_hand[2][3]
+            self.user_card3.value = self.my_hand[2][2]
         elif self.user_card4.image_file == "greybackground.png":
-            card_4 = self.deck.pop(0)
-            self.user_card3.image_file = card_4[3]
-            self.user_card3.value = card_4[2]
+            self.my_hand[3] = self.deck.pop(0)
+            self.user_card3.image_file = self.my_hand[3][3]
+            self.user_card3.value = self.my_hand[3][2]
         elif self.user_card5.image_file == "greybackground.png":
-            card_5 = self.deck.pop(0)
-            self.user_card3.image_file = card_5[3]
-            self.user_card3.value = card_5[2]
-
+            self.my_hand[4] = self.deck.pop(0)
+            self.user_card3.image_file = self.my_hand[4][3]
+            self.user_card3.value = self.my_hand[4][2]
 
 
 
