@@ -31,13 +31,19 @@ class BlackjackLayout(BoxLayout):
         card_2_image = self.my_hand[1][3]
         card_2_value = self.my_hand[1][2]
 
+        self.user_card3.image_file = "greybackground.png"
+        self.user_card3.card_value = 0
+        self.user_card4.image_file = "greybackground.png"
+        self.user_card4.card_value = 0
+        self.user_card5.image_file = "greybackground.png"
+        self.user_card5.card_value = 0
+
         self.user_card1.card_value = card_1_value
         self.user_card1.image_file = card_1_image
         self.user_card2.card_value = card_2_value
         self.user_card2.image_file = card_2_image
 
         self.blank.text = str(self.my_hand[0][2] + self.my_hand[1][2])
-
 
 
     def hit(self):
