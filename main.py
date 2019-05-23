@@ -62,7 +62,7 @@ class BlackjackLayout(BoxLayout):
             self.user_card5.image_file = self.my_hand[4][3]
             self.user_card5.card_value = self.my_hand[4][2]
             self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2] + self.my_hand[4][2])
-        if self.count.text == 21:
+        if int(self.count.text) > 21:
             self.name.text = 'BUST'
 
 
