@@ -45,6 +45,8 @@ class BlackjackLayout(BoxLayout):
 
         self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
 
+        self.name_text = 'BLACKJACK'
+
 
     def hit(self):
         if self.user_card3.card_value == 0:
