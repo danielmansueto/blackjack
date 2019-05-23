@@ -12,6 +12,7 @@ class BlackjackLayout(BoxLayout):
         super().__init__(**kwargs)
         self.deck = []
         self.my_hand = [[], [], [], [], []]
+        self.dealer_hand = [[], [], [], [], []]
         deck = []
         suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
         values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
@@ -29,6 +30,15 @@ class BlackjackLayout(BoxLayout):
         card_1_value = self.my_hand[0][2]
         card_2_image = self.my_hand[1][3]
         card_2_value = self.my_hand[1][2]
+
+        self.dealer_hand[0] = self.deck.pop(0)
+        self.dealer_hand[1] = self.deck.pop(0)
+
+        self.card1.image_file = self.dealer_hand[0][3]
+        self.card2.image_file = "boardgamepack/PNG/Cards/cardBack_red5.png"
+        self.card3.image_file = "greybackground.png"
+        self.card4.image_file = "greybackground.png"
+        self.card5.image_file = "greybackground.png"
 
         self.user_card3.image_file = "greybackground.png"
         self.user_card3.card_value = 0
@@ -52,6 +62,15 @@ class BlackjackLayout(BoxLayout):
         card_1_value = self.my_hand[0][2]
         card_2_image = self.my_hand[1][3]
         card_2_value = self.my_hand[1][2]
+
+        self.dealer_hand[0] = self.deck.pop(0)
+        self.dealer_hand[1] = self.deck.pop(0)
+
+        self.card1.image_file = self.dealer_hand[0][3]
+        self.card2.image_file = "boardgamepack/PNG/Cards/cardBack_red5.png"
+        self.card3.image_file = "greybackground.png"
+        self.card4.image_file = "greybackground.png"
+        self.card5.image_file = "greybackground.png"
 
         self.user_card3.image_file = "greybackground.png"
         self.user_card3.card_value = 0
@@ -127,6 +146,30 @@ class BlackjackLayout(BoxLayout):
             self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2] + self.my_hand[4][2])
         if int(self.count.text) > 21:
             self.name_text = 'BUST'
+            if self.name_text == 'BUST':
+                self.card2.image_file = self.my_hand[1][3]
+                if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
+                    self.dealer_hand[2] = self.deck.pop(0)
+                    self.card3.image_file = self.dealer_hand[2][3]
+                    if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
+                        self.dealer_hand[3] = self.deck.pop(0)
+                        self.card4.image_file = self.dealer_hand[3][3]
+                        if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + \
+                                self.dealer_hand[3][2] < 17:
+                            self.dealer_hand[4] = self.deck.pop(0)
+                            self.card5.image_file = self.dealer_hand[4][3]
+
+    def stay(self):
+        self.card2.image_file = self.my_hand[1][3]
+        if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
+            self.dealer_hand[2] = self.deck.pop(0)
+            self.card3.image_file = self.dealer_hand[2][3]
+            if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
+                self.dealer_hand[3] = self.deck.pop(0)
+                self.card4.image_file = self.dealer_hand[3][3]
+                if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] < 17:
+                    self.dealer_hand[4] = self.deck.pop(0)
+                    self.card5.image_file = self.dealer_hand[4][3]
 
 
 
