@@ -15,7 +15,7 @@ class BlackjackLayout(BoxLayout):
         deck = []
         suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
         values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
-        amounts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+        amounts = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
         for suit in suits:
             for i in range(len(values)):
@@ -69,6 +69,7 @@ class BlackjackLayout(BoxLayout):
 
         self.name_text = 'BLACKJACK'
         print(len(self.deck))
+
         if len(self.deck) <= 10:
             self.deck = []
             self.my_hand = [[], [], [], [], []]
