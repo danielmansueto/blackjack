@@ -29,10 +29,11 @@
     user_card5: user_card5
     hit_me: hit_me
     blank: blank
+    count: count
 
     Card:
+        id: name
         Label:
-            id: name
             text: "BLACKJACK"
             font_size: 100
             size_hint_y: 1
@@ -46,7 +47,7 @@
             text: "$"
             size_hint_x: .2
             font_size: 120
-            background_color: 1,1,1,1
+            background_color: 1, 1, 1, 1
         TextInput:
             text: ""
             font_size: 120
@@ -55,6 +56,7 @@
         Button:
             id: deal
             text: "Deal"
+            font_size: 75
             on_press: root.create_deck()
 
     BoxLayout:
@@ -103,10 +105,13 @@
             id: user_card5
 
         Card:
+            #image_file: ""
+            id: blank
             Label:
-                id: blank
+                id: count
                 text: ""
                 color: 0,0,0,1
+                font_size: 50
                 size: blank.size
                 pos: blank.pos
 
