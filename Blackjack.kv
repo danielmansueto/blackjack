@@ -10,10 +10,6 @@
             size: self.size
             pos: self.pos
 
-<Spacer@Widget>:
-    size_hint_x: .5
-
-
 <BlackjackLayout>:
     orientation: "vertical"
     deal: deal
@@ -46,17 +42,19 @@
 
     CustomBoxLayout:
         size_hint_y: 1
-        Label:
-            text: "$"
-            size_hint_x: .2
-            font_size: 120
-            background_color: 1, 1, 1, 1
+
         TextInput:
-            text: ""
+            size_hint_x: 1.5
+            text: "$"
             font_size: 120
             input_filter: 'float'
+            on_focus: self.text = ""
+
+        Widget:
+            
 
         Button:
+            size_hint_x: 1.5
             id: deal
             text: "Deal"
             font_size: 75
