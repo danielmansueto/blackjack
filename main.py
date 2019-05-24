@@ -125,7 +125,7 @@ class BlackjackLayout(BoxLayout):
 
             self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
 
-            self.name_text = 'BLACKJACK'
+            self.name_text = 'SHUFFLE'
 
 
     def hit(self):
@@ -148,16 +148,6 @@ class BlackjackLayout(BoxLayout):
             self.name_text = 'BUST'
             if self.name_text == 'BUST':
                 self.card2.image_file = self.my_hand[1][3]
-                if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
-                    self.dealer_hand[2] = self.deck.pop(0)
-                    self.card3.image_file = self.dealer_hand[2][3]
-                    if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
-                        self.dealer_hand[3] = self.deck.pop(0)
-                        self.card4.image_file = self.dealer_hand[3][3]
-                        if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + \
-                                self.dealer_hand[3][2] < 17:
-                            self.dealer_hand[4] = self.deck.pop(0)
-                            self.card5.image_file = self.dealer_hand[4][3]
 
     def stay(self):
         self.card2.image_file = self.my_hand[1][3]
