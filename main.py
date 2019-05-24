@@ -135,6 +135,7 @@ class BlackjackLayout(BoxLayout):
             self.user_card3.image_file = self.my_hand[2][3]
             self.user_card3.card_value = self.my_hand[2][2]
             self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2])
+
         elif self.user_card4.card_value == 0:
             self.my_hand[3] = self.deck.pop(0)
             self.user_card4.image_file = self.my_hand[3][3]

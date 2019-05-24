@@ -28,6 +28,8 @@
     count: count
     name_text: "BLACKJACK"
     stay_me: stay_me
+    dealer_counter: dealer_counter
+    dealer_number: dealer_number
 
     Card:
         id: name
@@ -79,12 +81,16 @@
         Card:
             id: card5
 
-        Widget:
-            canvas:
-                Rectangle:
-                    source: "boardgamepack/PNG/Cards/cardBack_red5.png"
-                    size: self.size
-                    pos: self.pos
+        Card:
+
+            id: dealer_counter
+            Label:
+                id: dealer_number
+                text: ""
+                color: 0,0,0,1
+                font_size: 50
+                size: blank.size
+                pos: blank.pos
 
     BoxLayout:
         size_hint_y: 2
