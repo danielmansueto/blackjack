@@ -153,6 +153,9 @@ class BlackjackLayout(BoxLayout):
 
     def stay(self):
         self.card2.image_file = self.dealer_hand[1][3]
+        done = False
+        while done is False:
+            self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] +  self.dealer_hand[2][2] + self.dealer_hand[3][2] + self.dealer_hand[4][2]
 
 '''
         self.card2.image_file = self.dealer_hand[1][3]
