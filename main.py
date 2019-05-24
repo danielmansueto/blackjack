@@ -17,6 +17,7 @@ class BlackjackLayout(BoxLayout):
         suits = ['Hearts', 'Clubs', 'Diamonds', 'Spades']
         values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
         amounts = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+        self.dealer_count = 0
 
         for suit in suits:
             for i in range(len(values)):
@@ -150,7 +151,10 @@ class BlackjackLayout(BoxLayout):
                 self.card2.image_file = self.my_hand[1][3]
 
     def stay(self):
-        self.card2.image_file = self.my_hand[1][3]
+        self.card2.image_file = self.dealer_hand[1][3]
+
+'''
+        self.card2.image_file = self.dealer_hand[1][3]
         if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
             self.dealer_hand[2] = self.deck.pop(0)
             self.card3.image_file = self.dealer_hand[2][3]
@@ -160,7 +164,10 @@ class BlackjackLayout(BoxLayout):
                 if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] < 17:
                     self.dealer_hand[4] = self.deck.pop(0)
                     self.card5.image_file = self.dealer_hand[4][3]
-
+        if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] > 17:
+            if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] > int(self.count.text):
+                self.name_text = 'LOSE'
+'''
 
 
 if __name__ == '__main__':
