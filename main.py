@@ -180,17 +180,21 @@ class BlackjackLayout(BoxLayout):
             self.card3.image_file = self.dealer_hand[2][3]
         else:
             self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
+            self.dealer_number = self.dealer_count
             if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
                 self.dealer_hand[3] = self.deck.pop(0)
                 self.card4.image_file = self.dealer_hand[3][3]
             else:
                 self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2]
+                self.dealer_number = self.dealer_count
                 if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] < 17:
                     self.dealer_hand[4] = self.deck.pop(0)
                     self.card5.image_file = self.dealer_hand[4][3]
                     self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] + self.dealer_hand[4][3]
+                    self.dealer_number = self.dealer_count
                 else:
                     self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2]
+                    self.dealer_number = self.dealer_count
 
                     '''
         if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] > 17:
