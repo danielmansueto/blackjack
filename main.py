@@ -34,6 +34,11 @@ class BlackjackLayout(BoxLayout):
 
         self.dealer_hand[0] = self.deck.pop(0)
         self.dealer_hand[1] = self.deck.pop(0)
+        '''
+        self.dealer_hand[2] = self.deck.pop(0)
+        self.dealer_hand[3] = self.deck.pop(0)
+        self.dealer_hand[4] = self.deck.pop(0)
+        '''
 
         self.card1.image_file = self.dealer_hand[0][3]
         self.card2.image_file = "boardgamepack/PNG/Cards/cardBack_red5.png"
@@ -66,6 +71,11 @@ class BlackjackLayout(BoxLayout):
 
         self.dealer_hand[0] = self.deck.pop(0)
         self.dealer_hand[1] = self.deck.pop(0)
+        '''
+        self.dealer_hand[2] = self.deck.pop(0)
+        self.dealer_hand[3] = self.deck.pop(0)
+        self.dealer_hand[4] = self.deck.pop(0)
+        '''
 
         self.card1.image_file = self.dealer_hand[0][3]
         self.card2.image_file = "boardgamepack/PNG/Cards/cardBack_red5.png"
@@ -152,26 +162,41 @@ class BlackjackLayout(BoxLayout):
                 self.card2.image_file = self.my_hand[1][3]
 
     def stay(self):
-        self.card2.image_file = self.dealer_hand[1][3]
+        '''
         done = False
         while done is False:
-            self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] +  self.dealer_hand[2][2] + self.dealer_hand[3][2] + self.dealer_hand[4][2]
-
-'''
+            if len(self.dealer_hand) == 5:
+                done = True
+                break
+            self.card2.image_file = self.dealer_hand[1][3]
+            for card in self.dealer_hand:
+                self.dealer_count = sum(self.dealer_hand[card][2])
+                print(self.dealer_count)
+        '''
         self.card2.image_file = self.dealer_hand[1][3]
         if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
             self.dealer_hand[2] = self.deck.pop(0)
             self.card3.image_file = self.dealer_hand[2][3]
+        else:
+            self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
             if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
                 self.dealer_hand[3] = self.deck.pop(0)
                 self.card4.image_file = self.dealer_hand[3][3]
+            else:
+                self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2]
                 if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] < 17:
                     self.dealer_hand[4] = self.deck.pop(0)
                     self.card5.image_file = self.dealer_hand[4][3]
+                    self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] + self.dealer_hand[4][3]
+                else:
+                    self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2]
+
+                    '''
         if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] > 17:
             if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] > int(self.count.text):
                 self.name_text = 'LOSE'
-'''
+                '''
+
 
 
 if __name__ == '__main__':
