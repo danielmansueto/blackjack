@@ -19,6 +19,8 @@ class BlackjackLayout(BoxLayout):
         values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
         amounts = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
         self.dealer_count = 0
+        self.user_count = 0
+
 
         for suit in suits:
             for i in range(len(values)):
@@ -61,7 +63,8 @@ class BlackjackLayout(BoxLayout):
         self.user_card2.card_value = card_2_value
         self.user_card2.image_file = card_2_image
 
-        self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
+        self.user_count = self.my_hand[0][2] + self.my_hand[1][2]
+        self.count.text = str(self.user_count)
 
         self.name_text = 'BLACKJACK'
     def create_deck(self):
@@ -100,10 +103,10 @@ class BlackjackLayout(BoxLayout):
         self.user_card2.card_value = card_2_value
         self.user_card2.image_file = card_2_image
 
+        self.user_count = self.my_hand[0][2] + self.my_hand[1][2]
         self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
 
         self.name_text = 'BLACKJACK'
-        print(len(self.deck))
 
         if len(self.deck) <= 10:
             self.deck = []
@@ -139,7 +142,8 @@ class BlackjackLayout(BoxLayout):
             self.user_card2.card_value = card_2_value
             self.user_card2.image_file = card_2_image
 
-            self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
+            self.user_count = self.my_hand[0][2] + self.my_hand[1][2]
+            self.count.text = str(self.user_count)
 
             self.name_text = 'SHUFFLE'
 
@@ -149,22 +153,63 @@ class BlackjackLayout(BoxLayout):
             self.my_hand[2] = self.deck.pop(0)
             self.user_card3.image_file = self.my_hand[2][3]
             self.user_card3.card_value = self.my_hand[2][2]
-            self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2])
+            self.user_count = self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2]
+            self.count.text = str(self.user_count)
+            if self.user_count > 21:
+                for card in range(0, 3):
+                    card_count = 0
+                    if self.my_hand[card][0] == 'A':
+                        card_count += 1
+                        for i in range(card_count):
+                            self.user_count -= 10
+                            self.count.text = str(self.user_count)
+                            if self.user_count < 12:
+                                self.user_count += 10
+                                self.count.text = str(self.user_count)
+
+
+
 
         elif self.user_card4.card_value == 0:
             self.my_hand[3] = self.deck.pop(0)
             self.user_card4.image_file = self.my_hand[3][3]
             self.user_card4.card_value = self.my_hand[3][2]
-            self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2])
+            self.user_count = self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2]
+            self.count.text = str(self.user_count)
+            if self.user_count > 21:
+                for card in range(0, 4):
+                    card_count = 0
+                    if self.my_hand[card][0] == 'A':
+                        card_count += 1
+                        for i in range(card_count):
+                            self.user_count -= 10
+                            self.count.text = str(self.user_count)
+                            if self.user_count < 12:
+                                self.user_count += 10
+                                self.count.text = str(self.user_count)
         elif self.user_card5.card_value == 0:
             self.my_hand[4] = self.deck.pop(0)
             self.user_card5.image_file = self.my_hand[4][3]
             self.user_card5.card_value = self.my_hand[4][2]
-            self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2] + self.my_hand[4][2])
-        if int(self.count.text) > 21:
+            self.user_count = self.my_hand[0][2] + self.my_hand[1][2] + self.my_hand[2][2] + self.my_hand[3][2] + self.my_hand[4][2]
+            self.count.text = str(self.user_count)
+            if self.user_count > 21:
+                for card in range(0, 5):
+                    card_count = 0
+                    if self.my_hand[card][0] == 'A':
+                        card_count += 1
+                        for i in range(card_count):
+                            self.user_count -= 10
+                            self.count.text = str(self.user_count)
+                            if self.user_count < 12:
+                                self.user_count += 10
+                                self.count.text = str(self.user_count)
+        if self.user_count > 21:
             self.name_text = 'BUST'
-            if self.name_text == 'BUST':
-                self.card2.image_file = self.my_hand[1][3]
+            self.card2.image_file = self.dealer_hand[1][3]
+            self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
+
+
 
     def stay(self):
         '''
@@ -178,18 +223,73 @@ class BlackjackLayout(BoxLayout):
                 self.dealer_count = sum(self.dealer_hand[card][2])
                 print(self.dealer_count)
         '''
+        self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
+        if self.dealer_count > 21:
+            for card in range(0, 2):
+                card_count = 0
+                if self.dealer_hand[card][0] == 'A':
+                    card_count += 1
+                    for i in range(card_count):
+                        print('yes')
+                        self.dealer_count -= 10
+                        print(self.dealer_count)
+                        self.dealer_number.text = str(self.dealer_count)
+                        if self.dealer_count < 12:
+                            self.dealer_count += 10
+                            self.dealer_number.text = str(self.dealer_count)
         self.card2.image_file = self.dealer_hand[1][3]
         if self.dealer_hand[0][2] + self.dealer_hand[1][2] < 17:
             self.dealer_hand[2] = self.deck.pop(0)
             self.card3.image_file = self.dealer_hand[2][3]
-            if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] < 17:
+            self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2]
+            if self.dealer_count > 21:
+                for card in range(0, 3):
+                    card_count = 0
+                    if self.dealer_hand[card][0] == 'A':
+                        card_count += 1
+                        for i in range(card_count):
+                            print('yes')
+                            self.dealer_count -= 10
+                            print(self.dealer_count)
+                            self.dealer_number.text = str(self.dealer_count)
+                            if self.dealer_count < 12:
+                                self.dealer_count += 10
+                                self.dealer_number.text = str(self.dealer_count)
+            if self.dealer_count < 17:
                 self.dealer_hand[3] = self.deck.pop(0)
                 self.card4.image_file = self.dealer_hand[3][3]
-                if self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] < 17:
+                self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2]
+                if self.dealer_count > 21:
+                    for card in range(0, 4):
+                        card_count = 0
+                        if self.dealer_hand[card][0] == 'A':
+                            card_count += 1
+                            for i in range(card_count):
+                                print('yes')
+                                self.dealer_count -= 10
+                                print(self.dealer_count)
+                                self.dealer_number.text = str(self.dealer_count)
+                                if self.dealer_count < 12:
+                                    self.dealer_count += 10
+                                    self.dealer_number.text = str(self.dealer_count)
+                if self.dealer_count < 17:
                     self.dealer_hand[4] = self.deck.pop(0)
                     self.card5.image_file = self.dealer_hand[4][3]
                     self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2] + self.dealer_hand[4][2]
                     self.dealer_number.text = str(self.dealer_count)
+                    if self.dealer_count > 21:
+                        for card in range(0, 5):
+                            card_count = 0
+                            if self.dealer_hand[card][0] == 'A':
+                                card_count += 1
+                                for i in range(card_count):
+                                    print('yes')
+                                    self.dealer_count -= 10
+                                    print(self.dealer_count)
+                                    self.dealer_number.text = str(self.dealer_count)
+                                    if self.dealer_count < 12:
+                                        self.dealer_count += 10
+                                        self.dealer_number.text = str(self.dealer_count)
                 else:
                     self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2] + self.dealer_hand[2][2] + self.dealer_hand[3][2]
                     self.dealer_number.text = str(self.dealer_count)
@@ -200,6 +300,15 @@ class BlackjackLayout(BoxLayout):
         else:
             self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
             self.dealer_number.text = str(self.dealer_count)
+
+        if self.dealer_count > self.user_count and self.dealer_count <=21:
+            self.name_text = 'LOSE'
+
+        elif self.dealer_count < self.user_count or self.dealer_count > 21:
+            self.name_text = 'WIN'
+
+        elif self.dealer_count == self.user_count:
+            self.name_text = 'DRAW'
 
 
 
