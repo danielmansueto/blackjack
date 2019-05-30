@@ -30,6 +30,7 @@
     stay_me: stay_me
     dealer_counter: dealer_counter
     dealer_number: dealer_number
+    bank: bank
 
     Card:
         id: name
@@ -46,13 +47,13 @@
         size_hint_y: 1
 
         TextInput:
-            size_hint_x: 1.5
-            text: "$"
-            font_size: 120
+            text: "Betting Amount"
+            font_size: 60
             input_filter: 'float'
             on_focus: self.text = ""
 
         Widget:
+            id: bank
             canvas:
                 Color:
                     rgba: .75,.75,.75,.45
@@ -61,12 +62,16 @@
                     pos: self.pos
 
             Label:
-                text: "Bet"
-                color: 0,0,0,1
+                id: money
+                text: "$10000"
+                color: 1,1,1,1
+                size: bank.size
+                pos: bank.pos
+                font_size: 75
 
 
         Button:
-            size_hint_x: 1.5
+            size_hint_x:
             id: deal
             text: "Deal"
             font_size: 75
