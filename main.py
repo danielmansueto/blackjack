@@ -20,6 +20,7 @@ class BlackjackLayout(BoxLayout):
         amounts = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
         self.dealer_count = 0
         self.user_count = 0
+        self.result = ''
 
 
         for suit in suits:
@@ -230,7 +231,6 @@ class BlackjackLayout(BoxLayout):
                 if self.dealer_hand[card][0] == 'A':
                     card_count += 1
                     for i in range(card_count):
-                        print('yes')
                         self.dealer_count -= 10
                         print(self.dealer_count)
                         self.dealer_number.text = str(self.dealer_count)
@@ -248,7 +248,6 @@ class BlackjackLayout(BoxLayout):
                     if self.dealer_hand[card][0] == 'A':
                         card_count += 1
                         for i in range(card_count):
-                            print('yes')
                             self.dealer_count -= 10
                             print(self.dealer_count)
                             self.dealer_number.text = str(self.dealer_count)
@@ -265,7 +264,6 @@ class BlackjackLayout(BoxLayout):
                         if self.dealer_hand[card][0] == 'A':
                             card_count += 1
                             for i in range(card_count):
-                                print('yes')
                                 self.dealer_count -= 10
                                 print(self.dealer_count)
                                 self.dealer_number.text = str(self.dealer_count)
@@ -283,7 +281,6 @@ class BlackjackLayout(BoxLayout):
                             if self.dealer_hand[card][0] == 'A':
                                 card_count += 1
                                 for i in range(card_count):
-                                    print('yes')
                                     self.dealer_count -= 10
                                     print(self.dealer_count)
                                     self.dealer_number.text = str(self.dealer_count)
@@ -303,12 +300,15 @@ class BlackjackLayout(BoxLayout):
 
         if self.dealer_count > self.user_count and self.dealer_count <=21:
             self.name_text = 'LOSE'
+            self.result = 'LOSE'
 
         elif self.dealer_count < self.user_count or self.dealer_count > 21:
             self.name_text = 'WIN'
+            self.result = 'WIN'
 
         elif self.dealer_count == self.user_count:
             self.name_text = 'DRAW'
+            self.result = 'DRAW'
 
 
 
