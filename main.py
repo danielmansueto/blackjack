@@ -302,6 +302,7 @@ class BlackjackLayout(BoxLayout):
             self.name_text = 'LOSE'
             self.result = 'LOSE'
 
+
         elif self.dealer_count < self.user_count or self.dealer_count > 21:
             self.name_text = 'WIN'
             self.result = 'WIN'
