@@ -40,6 +40,7 @@
         Label:
             text: root.name_text
             font_size: dp(50)
+            font_name: "Roboto-BoldItalic.ttf"
             size_hint_y: 1
             color: 0,0,0,1
             size: name.size
@@ -51,6 +52,7 @@
         TextInput:
             id: bet
             text: "Betting Amount:"
+            font_name: "NanumGothic.ttf"
             font_size: dp(30)
             input_filter: 'float'
             on_focus: self.text = ""
@@ -71,13 +73,15 @@
                 size: bank.size
                 pos: bank.pos
                 font_size: dp(30)
+                font_name: "NanumGothic.ttf"
 
 
         Button:
             size_hint_x:
             id: deal
-            text: "Deal"
-            font_size: dp(30)
+            text: "DEAL"
+            font_size: dp(25)
+            font_name: "NanumGothic.ttf"
             on_press: root.create_deck()
 
     BoxLayout:
@@ -107,6 +111,7 @@
                 text: ""
                 color: 0,0,0,1
                 font_size: dp(30)
+                font_name: "NanumGothic.ttf"
                 size: dealer_counter.size
                 pos: dealer_counter.pos
 
@@ -137,6 +142,7 @@
                 text: ""
                 color: 0,0,0,1
                 font_size: dp(30)
+                font_name: "NanumGothic.ttf"
                 size: blank.size
                 pos: blank.pos
 
@@ -146,13 +152,16 @@
             id: hit_me
             text: "Hit"
             on_press: root.hit()
-            font_size: sp(20)
+            font_size: sp(25)
+            font_name: "NanumGothic.ttf"
         Button:
             id: stay_me
             text: "Stay"
             on_press: root.stay()
-            font_size: sp(20)
+            font_size: sp(25)
+            font_name: "NanumGothic.ttf"
         Button:
             text: "Double"
-            font_size: sp(20)
+            font_size: sp(25)
+            font_name: "NanumGothic.ttf"
 
