@@ -34,6 +34,7 @@ class BlackjackLayout(BoxLayout):
 
         self.name_text = 'BLACKJACK (DEAL TO START)'
     def create_deck(self):
+
         self.user_bet = int(self.bet.text)
         self.my_hand[0] = self.deck.pop(0)
         self.my_hand[1] = self.deck.pop(0)
@@ -74,6 +75,8 @@ class BlackjackLayout(BoxLayout):
         self.count.text = str(self.my_hand[0][2] + self.my_hand[1][2])
 
         self.name_text = 'BLACKJACK'
+
+
 
         if len(self.deck) <= 10:
             self.deck = []
