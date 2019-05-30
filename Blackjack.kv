@@ -37,7 +37,7 @@
 
         Label:
             text: root.name_text
-            font_size: 100
+            font_size: dp(50)
             size_hint_y: 1
             color: 0,0,0,1
             size: name.size
@@ -47,8 +47,8 @@
         size_hint_y: 1
 
         TextInput:
-            text: "Betting Amount"
-            font_size: 60
+            text: "Betting Amount:"
+            font_size: dp(30)
             input_filter: 'float'
             on_focus: self.text = ""
 
@@ -67,14 +67,14 @@
                 color: 1,1,1,1
                 size: bank.size
                 pos: bank.pos
-                font_size: 75
+                font_size: dp(30)
 
 
         Button:
             size_hint_x:
             id: deal
             text: "Deal"
-            font_size: 75
+            font_size: dp(30)
             on_press: root.create_deck()
 
     BoxLayout:
@@ -103,7 +103,7 @@
                 id: dealer_number
                 text: ""
                 color: 0,0,0,1
-                font_size: 50
+                font_size: dp(30)
                 size: dealer_counter.size
                 pos: dealer_counter.pos
 
@@ -133,7 +133,7 @@
                 id: count
                 text: ""
                 color: 0,0,0,1
-                font_size: 50
+                font_size: dp(30)
                 size: blank.size
                 pos: blank.pos
 
@@ -143,10 +143,13 @@
             id: hit_me
             text: "Hit"
             on_press: root.hit()
+            font_size: sp(20)
         Button:
             id: stay_me
             text: "Stay"
             on_press: root.stay()
+            font_size: sp(20)
         Button:
             text: "Double"
+            font_size: sp(20)
 
