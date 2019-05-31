@@ -198,6 +198,7 @@ class BlackjackLayout(BoxLayout):
                 self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
                 self.bank_account -= self.user_bet
                 self.money.text = '$' + str(self.bank_account)
+                self.done = True
         else:
             self.name_text = 'PRESS DEAL'
 
