@@ -1,12 +1,12 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
-from kivy.core.window import Window
-from kivy.uix.widget import Widget
 import random
+
 
 class BlackjackApp(App):
     def build(self):
         return BlackjackLayout()
+
 
 class BlackjackLayout(BoxLayout):
     def __init__(self, **kwargs):
@@ -24,16 +24,14 @@ class BlackjackLayout(BoxLayout):
         self.bank_account = int(self.money.text[1:])
         self.done = True
 
-
         for suit in suits:
             for i in range(len(values)):
                 deck.append([values[i], suit, amounts[i], 'boardgamepack/PNG/Cards/card' + suit + values[i] + '.png'])
         self.deck = deck
 
         random.shuffle(self.deck)
-
-
         self.name_text = 'BLACKJACK (DEAL TO START)'
+
     def create_deck(self):
         self.done = False
 
@@ -47,11 +45,6 @@ class BlackjackLayout(BoxLayout):
 
         self.dealer_hand[0] = self.deck.pop(0)
         self.dealer_hand[1] = self.deck.pop(0)
-        '''
-        self.dealer_hand[2] = self.deck.pop(0)
-        self.dealer_hand[3] = self.deck.pop(0)
-        self.dealer_hand[4] = self.deck.pop(0)
-        '''
         self.dealer_count = self.dealer_hand[0][2]
         self.dealer_number.text = str(self.dealer_count)
 
@@ -79,8 +72,6 @@ class BlackjackLayout(BoxLayout):
         self.name_text = 'BLACKJACK'
         self.bank_account -= self.user_bet
         self.money.text = '$' + str(self.bank_account)
-
-
 
         if len(self.deck) <= 10:
             self.deck = []
@@ -122,7 +113,17 @@ class BlackjackLayout(BoxLayout):
             self.name_text = 'SHUFFLE'
             if self.user_count == 21:
                 self.stay()
-
+            if self.user_count > 21:
+                for card in range(0, 2):
+                    card_count = 0
+                    if self.my_hand[card][0] == 'A':
+                        card_count += 1
+                        for i in range(card_count):
+                            self.user_count -= 10
+                            self.count.text = str(self.user_count)
+                            if self.user_count < 12:
+                                self.user_count += 10
+                                self.count.text = str(self.user_count)
 
     def hit(self):
         if not self.done:
@@ -146,9 +147,6 @@ class BlackjackLayout(BoxLayout):
                                     self.count.text = str(self.user_count)
                 if self.user_count == 21:
                     self.stay()
-
-
-
 
             elif self.user_card4.card_value == 0:
                 self.my_hand[3] = self.deck.pop(0)
@@ -202,21 +200,7 @@ class BlackjackLayout(BoxLayout):
         else:
             self.name_text = 'PRESS DEAL'
 
-
-
-
     def stay(self):
-        '''
-        done = False
-        while done is False:
-            if len(self.dealer_hand) == 5:
-                done = True
-                break
-            self.card2.image_file = self.dealer_hand[1][3]
-            for card in self.dealer_hand:
-                self.dealer_count = sum(self.dealer_hand[card][2])
-                print(self.dealer_count)
-        '''
         if not self.done:
             self.dealer_count = self.dealer_hand[0][2] + self.dealer_hand[1][2]
             if self.dealer_count > 21:
@@ -259,7 +243,6 @@ class BlackjackLayout(BoxLayout):
                                 card_count += 1
                                 for i in range(card_count):
                                     self.dealer_count -= 10
-                                    print(self.dealer_count)
                                     self.dealer_number.text = str(self.dealer_count)
                                     if self.dealer_count < 12:
                                         self.dealer_count += 10
@@ -296,7 +279,6 @@ class BlackjackLayout(BoxLayout):
                 self.name_text = 'LOSE'
                 self.bet.text = '1000'
 
-
             elif self.dealer_count < self.user_count or self.dealer_count > 21:
                 self.name_text = 'WIN'
                 self.bank_account += 2 * self.user_bet
@@ -310,10 +292,6 @@ class BlackjackLayout(BoxLayout):
         else:
             self.name_text = 'PRESS DEAL'
         self.done = True
-
-
-
-
 
 
 if __name__ == '__main__':
